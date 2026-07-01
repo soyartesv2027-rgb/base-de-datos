@@ -245,7 +245,10 @@ INSERT INTO `usuarios` (`id`, `nombre`, `correo`, `password`, `rol`, `biografia`
 (15, 'Jefferson Garcia', 'orellana@gmail.com', '$2y$10$ai3HI.EyN4we.x/IPXXdbe7iiCgOlGCkjNuuKA47CAFNtWjoO/Eza', 'usuario', NULL, NULL, NULL, NULL, 'claro'),
 (16, 'Caleb Vladimir', 'caleb.cortez2027@adoc.superate.org.sv', '$2y$10$nuKgTG/RGFRYHgMJHUGMheTFN0GWOmWpghcy.Dsw1Pz5w9YNnq.yG', 'usuario', NULL, NULL, NULL, NULL, 'claro'),
 (17, 'Admin Soyarte', 'admin@gmail.com', '$2y$10$N9itAfM3vdK7OfZ48b3rRutq/uNEWnTETRmnyH/2dsvK6G7G8wrZy', 'admin', NULL, NULL, NULL, NULL, 'claro');
-
+-- alterar tabla usuarios
+--
+ALTER TABLE usuarios
+ADD ultima_actividad DATETIME NULL;
 --
 -- Índices para tablas volcadas
 --
