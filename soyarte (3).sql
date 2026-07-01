@@ -22,7 +22,44 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+-- Estructura para tabla conversaciones
+--
+CREATE TABLE conversaciones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    producto_id INT NOT NULL,
+    usuario1_id INT NOT NULL,
+    usuario2_id INT NOT NULL,
+    ultimo_mensaje DATETIME DEFAULT CURRENT_TIMESTAMP,
+    oculto_usuario1 TINYINT(1) DEFAULT 0,
+    oculto_usuario2 TINYINT(1) DEFAULT 0,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (producto_id)
+        REFERENCES productos(id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (usuario1_id)
+        REFERENCES usuarios(id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (usuario2_id)
+        REFERENCES usuarios(id)
+        ON DELETE CASCADE
+);
+--
+-- Estrutura de tabla mensajes
+--
+CREATE TABLE mensajes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    conversacion_id INT NOT NULL,
+    emisor_id INT NOT NULL,
+    mensaje TEXT NOT NULL,
+    leido TINYINT(1) DEFAULT 0,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (conversacion_id)
+        REFERENCES conversaciones(id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (emisor_id)
+        REFERENCES usuarios(id)
+        ON DELETE CASCADE
+);
 --
 -- Estructura de tabla para la tabla `carrito`
 --
